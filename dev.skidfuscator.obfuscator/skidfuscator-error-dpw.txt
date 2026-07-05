@@ -1,0 +1,13 @@
+===#Block A(size=4, flags=1)===
+   0. lvar6 = {30127303 ^ {1752616807 ^ 372630061}};
+   1. synth(lvar0 = lvar0);
+   2. synth(lvar1 = lvar1);
+   3. lvar6 = {1419044701 ^ lvar6};
+      -> Immediate #A -> #B
+===#Block B(size=5, flags=0)===
+   0. lvar2 = javax.crypto.Cipher.getInstance(dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.brgaqvediu(dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.mytzonykvbccyfb(), lvar6));
+   1. _consume(lvar2.init({723287762 ^ lvar6}, lvar1));
+   2. lvar3 = new java.lang.String;
+   3. _consume(lvar3.<init>(lvar2.doFinal(lvar0)));
+   4. return lvar3;
+      <- Immediate #A -> #B

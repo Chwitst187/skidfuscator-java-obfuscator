@@ -1,0 +1,11 @@
+===#Block A(size=2, flags=1)===
+   0. lvar4 = {1410092957 ^ {281229038 ^ 69935836}};
+   1. lvar4 = {1569978796 ^ lvar4};
+      -> Immediate #A -> #B
+===#Block B(size=5, flags=0)===
+   0. lvar0 = new java.util.HashMap;
+   1. _consume(lvar0.<init>());
+   2. dev.skidfuscator.core.TestCacheTemplate.initialPredicates = lvar0;
+   3. lvar1 = dev.skidfuscator.core.TestCacheTemplate.initialPredicates.put(dev.skidfuscator.core.TestCacheTemplate.siylggkoib(dev.skidfuscator.core.TestCacheTemplate.ohaxpyjifxpzcbw(), lvar4), java.lang.Integer.valueOf({494379522 ^ lvar4}));
+   4. return;
+      <- Immediate #A -> #B

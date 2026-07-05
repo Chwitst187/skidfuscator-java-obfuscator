@@ -1,0 +1,129 @@
+handler=Block #O, types=[Ljava/io/IOException;], range=[Block #G, Block #F]
+===#Block A(size=3, flags=1)===
+   0. lvar17 = {652591554 ^ {2120962400 ^ 372630061}};
+   1. synth(lvar0 = lvar0);
+   2. lvar17 = {1258261852 ^ lvar17};
+      -> Immediate #A -> #B
+===#Block B(size=3, flags=0)===
+   0. lvar1 = new char[{lvar0.length * ({71630801 ^ lvar17})}];
+   1. lvar2 = {71630803 ^ lvar17};
+   2. lvar17 = {1628446327 ^ lvar17};
+      -> Immediate #B -> #C
+      <- Immediate #A -> #B
+===#Block C(size=2, flags=0)===
+   0. if (lvar2 >= lvar0.length)
+      goto N
+   1. lvar17 = {1022319422 ^ lvar17};
+      -> ConditionalJump[IF_ICMPGE] #C -> #N
+      -> Immediate #C -> #D
+      <- UnconditionalJump[GOTO] #M -> #C
+      <- Immediate #B -> #C
+      <- Switch[112514543] #L -> #C
+===#Block D(size=15, flags=0)===
+   0. lvar4 = lvar0[lvar2];
+   1. lvar3 = {lvar4 & ({1505475173 ^ lvar17})};
+   2. lvar6 = {lvar2 * ({1505475224 ^ lvar17})};
+   3. lvar9 = dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.HEX_ARRAY;
+   4. lvar13 = {lvar3 >>> ({1505475230 ^ lvar17})};
+   5. lvar10 = lvar9[lvar13];
+   6. lvar1[lvar6] = lvar10;
+   7. lvar7 = {lvar2 * ({1505475224 ^ lvar17})};
+   8. lvar8 = {lvar7 + ({1505475227 ^ lvar17})};
+   9. lvar11 = dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.HEX_ARRAY;
+   10. lvar14 = {lvar3 & ({1505475221 ^ lvar17})};
+   11. lvar12 = lvar11[lvar14];
+   12. lvar1[lvar8] = lvar12;
+   13. lvar2 = {lvar2 + ({1505475227 ^ lvar17})};
+   14. goto K
+      -> UnconditionalJump[GOTO] #D -> #K
+      <- Immediate #C -> #D
+===#Block K(size=2, flags=10100)===
+   0. lvar17 = dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.mrdzknkzdoasualt(lvar17, 70825418);
+   1. goto G
+      -> UnconditionalJump[GOTO] #K -> #G
+      <- UnconditionalJump[GOTO] #D -> #K
+===#Block G(size=2, flags=0)===
+   0. if (ewdmxrpgdelhxnaf.feuguqspxoickhom.gilwozubsasqvtjn(lvar17) == 86880296)
+      goto F
+   1. throw nullconst;
+      -> ConditionalJump[IF_ICMPEQ] #G -> #F
+      -> TryCatch range: [G...F] -> O ([Ljava/io/IOException;])
+      <- UnconditionalJump[GOTO] #K -> #G
+===#Block F(size=1, flags=0)===
+   0. throw new java/io/IOException();
+      -> TryCatch range: [G...F] -> O ([Ljava/io/IOException;])
+      <- ConditionalJump[IF_ICMPEQ] #G -> #F
+===#Block O(size=1, flags=0)===
+   0. switch (ewdmxrpgdelhxnaf.feuguqspxoickhom.znizotjsuovymjgf(lvar17)) {
+      case -1569008406:
+      	 goto	#Q
+      case -333940094:
+      	 goto	#P
+      default:
+      	 goto	#R
+   }
+      -> DefaultSwitch #O -> #R
+      -> Switch[-1569008406] #O -> #Q
+      -> Switch[-333940094] #O -> #P
+      <- TryCatch range: [G...F] -> O ([Ljava/io/IOException;])
+      <- TryCatch range: [G...F] -> O ([Ljava/io/IOException;])
+===#Block P(size=2, flags=10100)===
+   0. lvar17 = dev.skidfuscator.testclasses.opaque.OpaqueConditionClazz$AES.mrdzknkzdoasualt(lvar17, 1451760103);
+   1. goto H
+      -> UnconditionalJump[GOTO] #P -> #H
+      <- Switch[-333940094] #O -> #P
+===#Block Q(size=2, flags=10100)===
+   0. lvar17 = {1598311466 ^ lvar17};
+   1. goto H
+      -> UnconditionalJump[GOTO] #Q -> #H
+      <- Switch[-1569008406] #O -> #Q
+===#Block H(size=2, flags=0)===
+   0. _consume(catch());
+   1. goto L
+      -> UnconditionalJump[GOTO] #H -> #L
+      <- UnconditionalJump[GOTO] #P -> #H
+      <- UnconditionalJump[GOTO] #Q -> #H
+===#Block L(size=1, flags=10100)===
+   0. switch (ewdmxrpgdelhxnaf.feuguqspxoickhom.gilwozubsasqvtjn(lvar17)) {
+      case 90535689:
+      	 goto	#M
+      case 112514543:
+      	 goto	#C
+      case 1100408011:
+      	 goto	#I
+      case 1494153754:
+      	 goto	#L
+      default:
+      	 goto	#I
+   }
+      -> Switch[1100408011] #L -> #I
+      -> Immediate #L -> #M
+      -> Switch[1494153754] #L -> #L
+      -> Switch[90535689] #L -> #M
+      -> DefaultSwitch #L -> #I
+      -> Switch[112514543] #L -> #C
+      <- UnconditionalJump[GOTO] #H -> #L
+      <- Switch[1494153754] #L -> #L
+===#Block M(size=2, flags=100)===
+   0. lvar17 = {1851782931 ^ lvar17};
+   1. goto C
+      -> UnconditionalJump[GOTO] #M -> #C
+      <- Immediate #L -> #M
+      <- Switch[90535689] #L -> #M
+===#Block I(size=1, flags=0)===
+   0. throw new java/lang/RuntimeException();
+      <- Switch[1100408011] #L -> #I
+      <- DefaultSwitch #L -> #I
+===#Block R(size=1, flags=0)===
+   0. throw new java/lang/RuntimeException("Error in hash");
+      <- DefaultSwitch #O -> #R
+===#Block N(size=2, flags=10100)===
+   0. lvar17 = {1085834030 ^ lvar17};
+   1. goto E
+      -> UnconditionalJump[GOTO] #N -> #E
+      <- ConditionalJump[IF_ICMPGE] #C -> #N
+===#Block E(size=3, flags=0)===
+   0. lvar5 = new java.lang.String;
+   1. _consume(lvar5.<init>(lvar1));
+   2. return lvar5;
+      <- UnconditionalJump[GOTO] #N -> #E

@@ -1,0 +1,12 @@
+===#Block A(size=5, flags=1)===
+   0. lvar6 = {134112509 ^ {440157280 ^ java.lang.Integer.parseInt("495211856")}};
+   1. dev.skidfuscator.core.TestCacheTemplate.olyhvrwoyq = java.nio.ByteBuffer.wrap(dev.skidfuscator.core.TestCacheTemplate.ibjagodopvgaurc()).asCharBuffer().toString();
+   2. lvar3 = new java/util/Random(-3659354864286902963L).nextInt();
+   3. dev.skidfuscator.core.TestCacheTemplate.aGaMj9qM1x = {195853504 ^ lvar3};
+   4. lvar6 = {11232365 ^ lvar6};
+      -> Immediate #A -> #B
+===#Block B(size=3, flags=0)===
+   0. _consume(dev.skidfuscator.core.TestCacheTemplate.bootstrap());
+   1. _consume(dev.skidfuscator.core.TestCacheTemplate.init());
+   2. return;
+      <- Immediate #A -> #B

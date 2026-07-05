@@ -1,0 +1,24 @@
+===#Block A(size=2, flags=1)===
+   0. lvar3 = {1574594483 ^ {1126402167 ^ 730287245}};
+   1. lvar3 = {1689249086 ^ lvar3};
+      -> Immediate #A -> #B
+===#Block B(size=2, flags=0)===
+   0. if (dev.skidfuscator.core.TestDispatcher.loaded == {1372669559 ^ lvar3})
+      goto G
+   1. lvar3 = {840809014 ^ lvar3};
+      -> Immediate #B -> #D
+      -> ConditionalJump[IF_ICMPEQ] #B -> #G
+      <- Immediate #A -> #B
+===#Block G(size=2, flags=10100)===
+   0. lvar3 = {1102415325 ^ lvar3};
+   1. goto C
+      -> UnconditionalJump[GOTO] #G -> #C
+      <- ConditionalJump[IF_ICMPEQ] #B -> #G
+===#Block C(size=2, flags=0)===
+   0. dev.skidfuscator.core.TestDispatcher.loaded = {dev.skidfuscator.core.TestDispatcher.loaded + ({275039147 ^ lvar3})};
+   1. return;
+      <- UnconditionalJump[GOTO] #G -> #C
+===#Block D(size=2, flags=0)===
+   0. dev.skidfuscator.core.TestDispatcher.loaded = {dev.skidfuscator.core.TestDispatcher.loaded + ({1674378304 ^ lvar3})};
+   1. return;
+      <- Immediate #B -> #D

@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.roscopeco.jasm' version "0.7.0"
     id 'xyz.wagyourtail.jvmdowngrader' version '1.2.1'
 }
 
@@ -14,8 +13,8 @@ configurations {
 }
 
 dependencies {
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    compileOnly 'org.projectlombok:lombok:1.18.36'
+    testCompileOnly 'org.projectlombok:lombok:1.18.46'
+    compileOnly 'org.projectlombok:lombok:1.18.46'
 
     api project(':commons')
     api project(':pure-analysis')
@@ -29,11 +28,10 @@ dependencies {
     implementation 'de.femtopedia.dex2jar:dex2jar:2.4.24'
     implementation 'org.apache.commons:commons-compress:1.24.0'
 
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.46'
     implementation 'org.fusesource.jansi:jansi:2.4.0'
     implementation 'org.yaml:snakeyaml:1.33'
 
-    testImplementation files("$buildDir/classes/jasm/test")
     testImplementation 'org.mockito:mockito-core:4.2.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
@@ -71,4 +69,167 @@ configurations {
 
 downgradeJar {
     downgradeTo = JavaVersion.VERSION_1_8
+}
+def generatedJasmTestClasses = layout.buildDirectory.dir('generated/classes/jasm/test')
+def generateJasmTestClasses = tasks.register('generateJasmTestClasses') {
+    outputs.dir(generatedJasmTestClasses)
+
+    doLast {
+        def outputFile = generatedJasmTestClasses.get()
+                .file('dev/skidfuscator/testclasses/stack/Dup2_X1.class')
+                .asFile
+        outputFile.parentFile.mkdirs()
+        outputFile.bytes = createDup2X1Class()
+    }
+}
+
+sourceSets {
+    test {
+        output.dir(generatedJasmTestClasses, builtBy: generateJasmTestClasses)
+    }
+}
+
+tasks.named('compileTestJava') {
+    dependsOn generateJasmTestClasses
+    classpath += files(generatedJasmTestClasses)
+}
+
+static byte[] createDup2X1Class() {
+    def bytes = new ByteArrayOutputStream()
+    def out = new DataOutputStream(bytes)
+
+    def utf8 = { String value -> out.writeByte(1); out.writeUTF(value) }
+    def clazz = { int nameIndex -> out.writeByte(7); out.writeShort(nameIndex) }
+    def string = { int utf8Index -> out.writeByte(8); out.writeShort(utf8Index) }
+    def nameAndType = { int nameIndex, int descIndex -> out.writeByte(12); out.writeShort(nameIndex); out.writeShort(descIndex) }
+    def methodRef = { int classIndex, int nameAndTypeIndex -> out.writeByte(10); out.writeShort(classIndex); out.writeShort(nameAndTypeIndex) }
+
+    out.writeInt((int) 0xCAFEBABE)
+    out.writeShort(0)
+    out.writeShort(52)
+    out.writeShort(47)
+    utf8('dev/skidfuscator/testclasses/stack/Dup2_X1')
+    clazz(1)
+    utf8('java/lang/Object')
+    clazz(3)
+    utf8('dev/skidfuscator/testclasses/TestRun')
+    clazz(5)
+    utf8('<init>')
+    utf8('()V')
+    nameAndType(7, 8)
+    methodRef(4, 9)
+    utf8('Code')
+    utf8('run')
+    utf8('java/lang/StringBuilder')
+    clazz(13)
+    nameAndType(7, 8)
+    methodRef(14, 15)
+    utf8('This should never be shown')
+    string(17)
+    utf8('String two ')
+    string(19)
+    utf8('String one ')
+    string(21)
+    utf8('append')
+    utf8('(Ljava/lang/String;)Ljava/lang/StringBuilder;')
+    nameAndType(23, 24)
+    methodRef(14, 25)
+    utf8('String one String two String one String two ')
+    string(27)
+    utf8('toString')
+    utf8('()Ljava/lang/String;')
+    nameAndType(29, 30)
+    methodRef(14, 31)
+    utf8('java/lang/String')
+    clazz(33)
+    utf8('equals')
+    utf8('(Ljava/lang/Object;)Z')
+    nameAndType(35, 36)
+    methodRef(34, 37)
+    utf8('java/lang/AssertionError')
+    clazz(39)
+    utf8('(Ljava/lang/Object;)V')
+    nameAndType(7, 41)
+    methodRef(40, 42)
+    utf8('Failed String test equality')
+    string(44)
+    utf8('StackMapTable')
+
+    out.writeShort(0x0021)
+    out.writeShort(2)
+    out.writeShort(4)
+    out.writeShort(1)
+    out.writeShort(6)
+    out.writeShort(0)
+    out.writeShort(2)
+
+    byte[] initCode = [0x2a, 0xb7, 0x00, 0x0a, 0xb1] as byte[]
+    out.writeShort(0x0001)
+    out.writeShort(7)
+    out.writeShort(8)
+    out.writeShort(1)
+    out.writeShort(11)
+    out.writeInt(12 + initCode.length)
+    out.writeShort(1)
+    out.writeShort(1)
+    out.writeInt(initCode.length)
+    out.write(initCode)
+    out.writeShort(0)
+    out.writeShort(0)
+
+    byte[] runCode = [
+            0xbb, 0x00, 0x0e,
+            0x59,
+            0xb7, 0x00, 0x10,
+            0x4c,
+            0x12, 0x12,
+            0x12, 0x14,
+            0x12, 0x16,
+            0x5d,
+            0x2b,
+            0x5f,
+            0xb6, 0x00, 0x1a,
+            0x5f,
+            0xb6, 0x00, 0x1a,
+            0x5f,
+            0x57,
+            0x5f,
+            0xb6, 0x00, 0x1a,
+            0x5f,
+            0xb6, 0x00, 0x1a,
+            0x12, 0x1c,
+            0x5f,
+            0xb6, 0x00, 0x20,
+            0xb6, 0x00, 0x26,
+            0x9a, 0x00, 0x0d,
+            0xbb, 0x00, 0x28,
+            0x59,
+            0x12, 0x2d,
+            0xb7, 0x00, 0x2b,
+            0xbf,
+            0xb1
+    ] as byte[]
+    out.writeShort(0x0001)
+    out.writeShort(12)
+    out.writeShort(8)
+    out.writeShort(1)
+    out.writeShort(11)
+    out.writeInt(12 + runCode.length + 14)
+    out.writeShort(6)
+    out.writeShort(2)
+    out.writeInt(runCode.length)
+    out.write(runCode)
+    out.writeShort(0)
+    out.writeShort(1)
+    out.writeShort(46)
+    out.writeInt(8)
+    out.writeShort(1)
+    out.writeByte(252)
+    out.writeShort(56)
+    out.writeByte(7)
+    out.writeShort(14)
+
+    out.writeShort(0)
+    out.close()
+    return bytes.toByteArray()
 }

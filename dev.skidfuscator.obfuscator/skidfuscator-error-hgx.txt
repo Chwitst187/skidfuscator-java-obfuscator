@@ -1,0 +1,54 @@
+handler=Block #J, types=[Ljava/lang/RuntimeException;], range=[Block #I, Block #H]
+===#Block A(size=1, flags=1)===
+   0. synth(lvar0 = lvar0);
+      -> Immediate #A -> #B
+===#Block B(size=2, flags=0)===
+   0. lvar1 = ((java.lang.Integer)dev.skidfuscator.core.TestCacheTemplate.initialPredicates.get(dev.skidfuscator.core.TestCacheTemplate.siylggkoib(dev.skidfuscator.core.TestCacheTemplate.tzgwlmshbqsthmn(), lvar7))).intValue();
+   1. if (lvar1 != dev.skidfuscator.core.TestDispatcher.loaded)
+      goto C
+      -> Immediate #B -> #D
+      -> ConditionalJump[IF_ICMPNE] #B -> #C
+      <- Immediate #A -> #B
+===#Block C(size=1, flags=0)===
+   0. lvar4 = {1731661716 ^ lvar7};
+      -> Immediate #C -> #E
+      <- ConditionalJump[IF_ICMPNE] #B -> #C
+===#Block D(size=2, flags=0)===
+   0. lvar4 = {1967143235 ^ lvar7};
+   1. goto I
+      -> UnconditionalJump[GOTO] #D -> #I
+      <- Immediate #B -> #D
+===#Block I(size=2, flags=0)===
+   0. if (ewdmxrpgdelhxnaf.feuguqspxoickhom.gilwozubsasqvtjn(lvar7) == 115180423)
+      goto H
+   1. throw nullconst;
+      -> TryCatch range: [I...H] -> J ([Ljava/lang/RuntimeException;])
+      -> ConditionalJump[IF_ICMPEQ] #I -> #H
+      <- UnconditionalJump[GOTO] #D -> #I
+===#Block H(size=1, flags=0)===
+   0. throw new java/lang/RuntimeException();
+      -> TryCatch range: [I...H] -> J ([Ljava/lang/RuntimeException;])
+      <- ConditionalJump[IF_ICMPEQ] #I -> #H
+===#Block J(size=2, flags=0)===
+   0. _consume(catch());
+   1. goto E
+      -> UnconditionalJump[GOTO] #J -> #E
+      <- TryCatch range: [I...H] -> J ([Ljava/lang/RuntimeException;])
+      <- TryCatch range: [I...H] -> J ([Ljava/lang/RuntimeException;])
+===#Block E(size=1, flags=0)===
+   0. if (lvar4 != {505316272 ^ lvar7})
+      goto G
+      -> ConditionalJump[IF_ICMPNE] #E -> #G
+      -> Immediate #E -> #F
+      <- Immediate #C -> #E
+      <- UnconditionalJump[GOTO] #J -> #E
+===#Block F(size=4, flags=0)===
+   0. _consume(java.lang.System.out.println(dynamic_invoke<java.lang.String>(java.lang.invoke.StringConcatFactory.makeConcatWithConstants("Unmatched:  vs ", lvar1, dev.skidfuscator.core.TestDispatcher.loaded))));
+   1. lvar2 = new java.util.Random;
+   2. _consume(lvar2.<init>());
+   3. return lvar2.nextInt();
+      <- Immediate #E -> #F
+===#Block G(size=2, flags=0)===
+   0. lvar3 = dev.skidfuscator.core.TestCacheTemplate.initialPredicates.put(dev.skidfuscator.core.TestCacheTemplate.siylggkoib(dev.skidfuscator.core.TestCacheTemplate.irpdrczvxmgyemm(), lvar7), java.lang.Integer.valueOf({lvar1 + ({1005339213 ^ lvar7})}));
+   1. return ((java.lang.Integer)dev.skidfuscator.core.TestCacheTemplate.initialPredicates.get(lvar0)).intValue();
+      <- ConditionalJump[IF_ICMPNE] #E -> #G
